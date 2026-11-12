@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FileMaster – File Compressor & File Converter
 
 A small full-stack web app built with **Java 21, Spring Boot, Maven** and plain **HTML/CSS/JavaScript**.
@@ -255,3 +256,6 @@ Document example (new target format): add it to `SUPPORTED`, then add a `case` i
 - **How do you run FFmpeg safely?** `ProcessBuilder` with a list of arguments (no shell, so no command injection), fixed file names inside a private temp folder, `-protocol_whitelist file` so FFmpeg cannot open URLs or playlists, a time limit that kills stuck processes, an output size limit (`-fs`), and a semaphore so only one conversion runs at a time on a small server.
 - **Why is MediaCommands a separate class?** It only builds lists of text, so it has no Spring code and is easy to read and test.
 - **Why `${PORT:8080}`?** Render assigns the port at runtime; locally the default 8080 is used.
+=======
+# filemaster
+>>>>>>> a95757c367d0712f1351039f32515b63bcfae680
