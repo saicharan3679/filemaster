@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#1c2f46">
+  <title>FileMaster – File Compressor &amp; File Converter</title>
+  <meta name="description" content="Compress images and files, and convert JPG, PNG and TXT files online. Files are deleted right after processing.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Icon sprite: every icon below is drawn once here and reused with <use> -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></symbol>
+    <symbol id="i-compress" viewBox="0 0 24 24"><polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="14" y1="10" x2="21" y2="3"/><line x1="3" y1="21" x2="10" y2="14"/></symbol>
+    <symbol id="i-convert" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+    <symbol id="i-forward" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  </svg>
+
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#home" aria-label="FileMaster home">FileMaster</a>
+      <span class="topbar-note"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg> Files are deleted right after processing</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ============ HOME ============ -->
+    <section id="view-home" class="view">
+      <div class="hero">
+        <h1>Compress and convert your files.</h1>
+        <p>Choose a tool, add your file and download the result. No account needed.</p>
+      </div>
+
+      <ul class="tiles">
+        <li class="tile">
+          <a class="tile-link" href="#compress">
+            <span class="tile-top"><svg class="icon tile-icon" aria-hidden="true"><use href="#i-compress"/></svg><span class="tile-kind">Compress</span></span>
+            <h2 class="tile-title">File Compressor</h2>
+            <p class="tile-text">Shrink images or pack documents into a ZIP. You see the exact size of every level before you choose.</p>
+            <span class="tile-foot">
+              <span class="tile-formats">Images · PDF · Word · Excel · PowerPoint · Text</span>
+              <span class="tile-open">Open <svg class="icon" aria-hidden="true"><use href="#i-forward"/></svg></span>
+            </span>
+          </a>
+        </li>
+        <li class="tile">
+          <a class="tile-link" href="#image">
+            <span class="tile-top"><svg class="icon tile-icon" aria-hidden="true"><use href="#i-image"/></svg><span class="tile-kind">Compress</span></span>
+            <h2 class="tile-title">Image Compressor</h2>
+            <p class="tile-text">Make photos and graphics smaller with Low, Medium or High quality. The picture keeps its width and height.</p>
+            <span class="tile-foot">
+              <span class="tile-formats">JPG · PNG · WebP</span>
+              <span class="tile-open">Open <svg class="icon" aria-hidden="true"><use href="#i-forward"/></svg></span>
+            </span>
+          </a>
+        </li>
+        <li class="tile">
+          <a class="tile-link" href="#convert">
+            <span class="tile-top"><svg class="icon tile-icon" aria-hidden="true"><use href="#i-convert"/></svg><span class="tile-kind">Convert</span></span>
+            <h2 class="tile-title">File Converter</h2>
+            <p class="tile-text">Word, PDF, text and image conversions, one by one or merged into a single file.</p>
+            <span class="tile-foot">
+              <span class="tile-formats">DOCX · DOC · PDF · TXT · JPG · PNG</span>
+              <span class="tile-open">Open <svg class="icon" aria-hidden="true"><use href="#i-forward"/></svg></span>
+            </span>
+          </a>
+        </li>
+        <li class="tile">
+          <a class="tile-link" href="#audio">
+            <span class="tile-top"><svg class="icon tile-icon" aria-hidden="true"><use href="#i-music"/></svg><span class="tile-kind">Convert</span></span>
+            <h2 class="tile-title">Audio Converter</h2>
+            <p class="tile-text">Convert songs and recordings from one audio format to another.</p>
+            <span class="tile-foot">
+              <span class="tile-formats">MP3 · WAV · M4A · AAC · OGG · FLAC · WMA</span>
+              <span class="tile-open">Open <svg class="icon" aria-hidden="true"><use href="#i-forward"/></svg></span>
+            </span>
+          </a>
+        </li>
+        <li class="tile">
+          <a class="tile-link" href="#video">
+            <span class="tile-top"><svg class="icon tile-icon" aria-hidden="true"><use href="#i-video"/></svg><span class="tile-kind">Convert</span></span>
+            <h2 class="tile-title">Video Converter</h2>
+            <p class="tile-text">Convert videos between formats, or pull the sound out of a video as MP3, WAV or M4A.</p>
+            <span class="tile-foot">
+              <span class="tile-formats">MP4 · MOV · MKV · AVI · WebM · WMV · FLV · M4V</span>
+              <span class="tile-open">Open <svg class="icon" aria-hidden="true"><use href="#i-forward"/></svg></span>
+            </span>
+          </a>
+        </li>
+      </ul>
+
+      <p class="limits">Up to 8 files at once, 20 MB each. Audio and video: one file at a time, up to 50 MB.</p>
+
+      <section class="privacy" aria-labelledby="privacy-title">
+        <h2 id="privacy-title"><span>Your Files.</span> <span>Your Privacy.</span> <span>Our Priority.</span></h2>
+        <p class="privacy-lead">Your files are processed securely and temporarily. We do not permanently store or share your uploaded files. Temporary files are automatically deleted after processing.</p>
+        <ul class="privacy-list">
+          <li>Every file is checked for its type, size and real content before it is processed.</li>
+          <li>Files are handled in a private temporary folder under a safe, generated file name.</li>
+          <li>The folder is deleted as soon as processing ends, even when an error happens. A cleanup job also removes any leftovers.</li>
+          <li>There is no database and no account, so nothing about your files is kept after you download the result.</li>
+        </ul>
+      </section>
+    </section>
+
+    <!-- ============ COMPRESSOR ============ -->
+    <section id="view-compress" class="view" hidden>
+      <a class="back-link" href="#home"><svg class="icon"><use href="#i-back"/></svg> All tools</a>
+
+      <header class="page-head">
+        <span class="page-icon"><svg class="icon" aria-hidden="true"><use href="#i-compress"/></svg></span>
+        <h2>File Compressor</h2>
+        <p>Images are resized and re-encoded. Other files are packed into a ZIP.</p>
+      </header>
+
+      <div class="panel">
+        <div class="dropzone" id="compress-drop" tabindex="0" role="button" aria-label="Choose files to compress">
+          <svg class="icon dz-icon"><use href="#i-upload"/></svg>
+          <p class="dz-title">Drop files here</p>
+          <p class="dz-sub">or <span class="link">browse your device</span> · up to 8 files, 20 MB each</p>
+          <p class="dz-types">JPG, PNG, PDF, Word, Excel, PowerPoint, TXT, CSV, JSON, XML, HTML, MD</p>
+        </div>
+        <input type="file" id="compress-input" multiple hidden>
+
+        <ul class="file-list" id="compress-files" hidden></ul>
+
+        <fieldset class="modes" id="compress-modes" hidden>
+          <legend>What should happen with these files?</legend>
+          <label class="mode">
+            <input type="radio" name="compress-mode" value="individual" checked>
+            <span class="mode-body"><strong>Compress each file</strong><small>You get one result per file</small></span>
+          </label>
+          <label class="mode">
+            <input type="radio" name="compress-mode" value="merge">
+            <span class="mode-body"><strong>Merge into one ZIP</strong><small>All files packed into a single archive</small></span>
+          </label>
+        </fieldset>
+
+        <fieldset class="presets">
+          <legend>Compression level</legend>
+          <label class="preset">
+            <input type="radio" name="preset" value="small">
+            <span class="preset-body"><strong>Small</strong><em>Smallest file</em><span class="preset-size" data-preset="small">Add a file to see the size</span><small>Strongest compression, lower quality</small></span>
+          </label>
+          <label class="preset">
+            <input type="radio" name="preset" value="medium" checked>
+            <span class="preset-body"><strong>Medium</strong><em>Balanced</em><span class="preset-size" data-preset="medium">Add a file to see the size</span><small>Good savings, good quality</small></span>
+          </label>
+          <label class="preset">
+            <input type="radio" name="preset" value="high">
+            <span class="preset-body"><strong>High</strong><em>Best quality</em><span class="preset-size" data-preset="high">Add a file to see the size</span><small>Light compression, bigger file</small></span>
+          </label>
+        </fieldset>
+        <p class="estimate-note" id="compress-estimate-note" hidden></p>
+
+        <button type="button" class="btn btn-primary btn-block" id="compress-btn" disabled>Compress file</button>
+
+        <div class="progress" id="compress-progress" hidden><div class="progress-bar" id="compress-bar"></div></div>
+        <p class="status" id="compress-status" role="status"></p>
+        <div class="alert alert-error" id="compress-error" role="alert" hidden></div>
+
+        <div class="result" id="compress-result" hidden>
+          <div class="result-title"><svg class="icon"><use href="#i-check"/></svg> <span id="compress-result-title"></span></div>
+          <ul class="result-list" id="compress-result-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONVERTER ============ -->
+    <section id="view-convert" class="view" hidden>
+      <a class="back-link" href="#home"><svg class="icon"><use href="#i-back"/></svg> All tools</a>
+
+      <header class="page-head">
+        <span class="page-icon"><svg class="icon" aria-hidden="true"><use href="#i-convert"/></svg></span>
+        <h2>File Converter</h2>
+        <p>Add your files, then choose the format you want for each.</p>
+      </header>
+
+      <div class="panel">
+        <div class="dropzone" id="convert-drop" tabindex="0" role="button" aria-label="Choose files to convert">
+          <svg class="icon dz-icon"><use href="#i-upload"/></svg>
+          <p class="dz-title">Drop files here</p>
+          <p class="dz-sub">or <span class="link">browse your device</span> · up to 8 files, 20 MB each</p>
+          <p class="dz-types">DOCX, DOC, PDF, TXT, JPG, PNG</p>
+        </div>
+        <input type="file" id="convert-input" multiple hidden>
+
+        <ul class="file-list" id="convert-files" hidden></ul>
+
+        <fieldset class="modes" id="convert-modes" hidden>
+          <legend>What should happen with these files?</legend>
+          <label class="mode">
+            <input type="radio" name="convert-mode" value="individual" checked>
+            <span class="mode-body"><strong>Convert each file</strong><small>Pick a format for every file</small></span>
+          </label>
+          <label class="mode">
+            <input type="radio" name="convert-mode" value="merge" id="convert-merge-radio">
+            <span class="mode-body"><strong>Merge into one file</strong><small id="convert-merge-hint">All files joined, in the order shown</small></span>
+          </label>
+        </fieldset>
+
+        <div class="merge-row" id="convert-merge-row" hidden>
+          <label class="field">
+            <span>Merged file format</span>
+            <select id="convert-merge-target"></select>
+          </label>
+        </div>
+
+        <button type="button" class="btn btn-primary btn-block" id="convert-btn" disabled>Convert file</button>
+
+        <div class="progress" id="convert-progress" hidden><div class="progress-bar" id="convert-bar"></div></div>
+        <p class="status" id="convert-status" role="status"></p>
+        <div class="alert alert-error" id="convert-error" role="alert" hidden></div>
+
+        <div class="result" id="convert-result" hidden>
+          <div class="result-title"><svg class="icon"><use href="#i-check"/></svg> <span id="convert-result-title"></span></div>
+          <ul class="result-list" id="convert-result-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ IMAGE COMPRESSOR ============ -->
+    <section id="view-image" class="view" hidden>
+      <a class="back-link" href="#home"><svg class="icon"><use href="#i-back"/></svg> All tools</a>
+
+      <header class="page-head">
+        <span class="page-icon"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg></span>
+        <h2>Image Compressor</h2>
+        <p>Make image files smaller without changing their width and height.</p>
+      </header>
+
+      <div class="panel">
+        <div class="dropzone" id="image-drop" tabindex="0" role="button" aria-label="Choose images to compress">
+          <svg class="icon dz-icon"><use href="#i-upload"/></svg>
+          <p class="dz-title">Drop images here</p>
+          <p class="dz-sub">or <span class="link">browse your device</span> · up to 8 images, 20 MB each</p>
+          <p class="dz-types">JPG, JPEG, PNG, WEBP</p>
+        </div>
+        <input type="file" id="image-input" multiple hidden>
+
+        <ul class="file-list" id="image-files" hidden></ul>
+
+        <fieldset class="presets">
+          <legend>Quality</legend>
+          <label class="preset">
+            <input type="radio" name="image-quality" value="low">
+            <span class="preset-body"><strong>Low</strong><em>Smallest file</em><small>Strongest compression, some quality loss</small></span>
+          </label>
+          <label class="preset">
+            <input type="radio" name="image-quality" value="medium" checked>
+            <span class="preset-body"><strong>Medium</strong><em>Balanced</em><small>Good savings, good quality</small></span>
+          </label>
+          <label class="preset">
+            <input type="radio" name="image-quality" value="high">
+            <span class="preset-body"><strong>High</strong><em>Best quality</em><small>Lighter compression, smaller savings</small></span>
+          </label>
+        </fieldset>
+        <p class="estimate-note">JPG and WebP are saved with lower quality. PNG uses fewer colours (transparency is kept, but soft edges can look sharper). Animated WebP is not supported.</p>
+
+        <button type="button" class="btn btn-primary btn-block" id="image-btn" disabled>Compress image</button>
+
+        <div class="progress" id="image-progress" hidden><div class="progress-bar" id="image-bar"></div></div>
+        <p class="status" id="image-status" role="status"></p>
+        <div class="alert alert-error" id="image-error" role="alert" hidden></div>
+
+        <div class="result" id="image-result" hidden>
+          <div class="result-title"><svg class="icon"><use href="#i-check"/></svg> <span id="image-result-title"></span></div>
+          <ul class="result-list" id="image-result-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AUDIO CONVERTER ============ -->
+    <section id="view-audio" class="view" hidden>
+      <a class="back-link" href="#home"><svg class="icon"><use href="#i-back"/></svg> All tools</a>
+
+      <header class="page-head">
+        <span class="page-icon"><svg class="icon" aria-hidden="true"><use href="#i-music"/></svg></span>
+        <h2>Audio Converter</h2>
+        <p>Convert audio between formats. The sound is really re-encoded with FFmpeg.</p>
+      </header>
+
+      <div class="panel">
+        <div class="dropzone" id="audio-drop" tabindex="0" role="button" aria-label="Choose an audio file to convert">
+          <svg class="icon dz-icon"><use href="#i-upload"/></svg>
+          <p class="dz-title">Drop an audio file here</p>
+          <p class="dz-sub">or <span class="link">browse your device</span> · one file, up to 50 MB</p>
+          <p class="dz-types">MP3, WAV, M4A, AAC, OGG, FLAC, WMA</p>
+        </div>
+        <input type="file" id="audio-input" hidden>
+
+        <ul class="file-list" id="audio-files" hidden></ul>
+
+        <button type="button" class="btn btn-primary btn-block" id="audio-btn" disabled>Convert file</button>
+
+        <div class="progress" id="audio-progress" hidden><div class="progress-bar" id="audio-bar"></div></div>
+        <p class="status" id="audio-status" role="status"></p>
+        <div class="alert alert-error" id="audio-error" role="alert" hidden></div>
+
+        <div class="result" id="audio-result" hidden>
+          <div class="result-title"><svg class="icon"><use href="#i-check"/></svg> <span id="audio-result-title"></span></div>
+          <ul class="result-list" id="audio-result-list"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIDEO CONVERTER ============ -->
+    <section id="view-video" class="view" hidden>
+      <a class="back-link" href="#home"><svg class="icon"><use href="#i-back"/></svg> All tools</a>
+
+      <header class="page-head">
+        <span class="page-icon"><svg class="icon" aria-hidden="true"><use href="#i-video"/></svg></span>
+        <h2>Video Converter</h2>
+        <p>Convert videos, or extract the audio of an MP4, MOV, MKV or WEBM video as MP3, WAV or M4A.</p>
+      </header>
+
+      <div class="panel">
+        <div class="dropzone" id="video-drop" tabindex="0" role="button" aria-label="Choose a video file to convert">
+          <svg class="icon dz-icon"><use href="#i-upload"/></svg>
+          <p class="dz-title">Drop a video file here</p>
+          <p class="dz-sub">or <span class="link">browse your device</span> · one file, up to 50 MB</p>
+          <p class="dz-types">MP4, MOV, MKV, AVI, WEBM, WMV, FLV, M4V</p>
+        </div>
+        <input type="file" id="video-input" hidden>
+
+        <ul class="file-list" id="video-files" hidden></ul>
+
+        <button type="button" class="btn btn-primary btn-block" id="video-btn" disabled>Convert file</button>
+
+        <div class="progress" id="video-progress" hidden><div class="progress-bar" id="video-bar"></div></div>
+        <p class="status" id="video-status" role="status"></p>
+        <div class="alert alert-error" id="video-error" role="alert" hidden></div>
+
+        <div class="result" id="video-result" hidden>
+          <div class="result-title"><svg class="icon"><use href="#i-check"/></svg> <span id="video-result-title"></span></div>
+          <ul class="result-list" id="video-result-list"></ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
